@@ -1,0 +1,371 @@
+/* =========================
+   PAGE LAYOUT
+========================= */
+
+.create-mla-page {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: #f4f7fb;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+
+/* =========================
+   CONTENT AREA
+========================= */
+
+.create-mla-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.mla-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.mla-title {
+  margin-bottom: 22px;
+  color: #1f2937;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.mla-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.mla-form input,
+.mla-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s ease;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.mla-form input:focus,
+.mla-form select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.25);
+}
+
+/* READONLY */
+
+.mla-form input[readonly] {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.submit-btn {
+  grid-column: 1 / -1;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* =========================
+   TABLE TITLE
+========================= */
+
+.table-title {
+  margin-bottom: 18px;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* =========================
+   TABLE WRAPPER
+========================= */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.mla-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* HEADER */
+
+.mla-table thead {
+  background: #2563eb;
+  color: white;
+}
+
+.mla-table th {
+  padding: 13px;
+  text-align: left;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* BODY */
+
+.mla-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.mla-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.action-group {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s ease;
+  color: white;
+}
+
+/* EDIT */
+
+.edit-btn {
+  background: #2563eb;
+}
+
+.edit-btn:hover {
+  background: #1d4ed8;
+}
+
+/* DELETE */
+
+.delete-btn {
+  background: #dc2626;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+
+  /* .admin-sidebar {
+    width: 150px;
+    min-width: 150px;
+  } */
+
+  .create-mla-content {
+    padding: 18px;
+  }
+
+  .mla-card {
+    padding: 22px;
+  }
+
+  .mla-title {
+    font-size: 24px;
+  }
+
+  .table-title {
+    font-size: 22px;
+  }
+
+  .mla-table th,
+  .mla-table td {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .create-mla-page {
+    flex-direction: column;
+  }
+
+  /* .admin-sidebar {
+    width: 100%;
+    min-width: 100%;
+  } */
+
+  .create-mla-content {
+    padding: 14px;
+  }
+
+  .mla-card {
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  .mla-title {
+    font-size: 22px;
+  }
+
+  .table-title {
+    font-size: 20px;
+  }
+
+  .mla-form {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .action-group {
+    flex-direction: column;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    width: 100%;
+  }
+
+  .mla-table {
+    min-width: 700px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .create-mla-content {
+    padding: 10px;
+  }
+
+  .mla-card {
+    padding: 16px;
+  }
+
+  .mla-title {
+    font-size: 20px;
+  }
+
+  .table-title {
+    font-size: 18px;
+  }
+
+  .mla-form input,
+  .mla-form select {
+    padding: 11px;
+    font-size: 13px;
+  }
+
+  .submit-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .mla-table {
+    min-width: 650px;
+  }
+
+  .mla-table th,
+  .mla-table td {
+    padding: 9px;
+    font-size: 12px;
+  }
+}
+
+/* =========================
+   LARGE SCREEN OPTIMIZATION
+========================= */
+
+@media (min-width: 1200px) {
+
+  .create-mla-content {
+    padding: 18px;
+  }
+
+  .mla-card {
+    padding: 24px;
+  }
+
+  .mla-table {
+    min-width: 100%;
+  }
+}
