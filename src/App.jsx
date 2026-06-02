@@ -10,6 +10,7 @@ import CreateMla from "./pages/CreateMla";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CreateCitizen from "./pages/CreateCitizen";
+import AdminBanner from "./pages/AdminBanner";
 
 export default function App() {
   return (
@@ -68,6 +69,11 @@ export default function App() {
               <CreateCitizen />
             </ProtectedRoute>
           }
+        />
+
+        <Route
+          path="/admin/banner"
+          element={<AdminBanner />}
         />
 
       </Routes>

@@ -21,14 +21,49 @@ const CreateMla = () => {
     const generateMlaId = () => {
         return "MLA-" + Math.random().toString(36).substring(2, 8).toUpperCase();
     };
+    const handleConstituencyChange = async (e) => {
+
+        const constituencyId = e.target.value;
+
+        try {
+
+            const res = await axiosInstance.get(
+                `/admin/mla-info/${constituencyId}`
+            );
+
+            setForm(prev => ({
+                ...prev,
+
+                constituencyId,
+
+                name: res.data?.name || "",
+
+                party: res.data?.party || "",
+
+                phone: res.data?.phone || "",
+
+                photo: res.data?.photo || ""
+            }));
+
+        } catch (error) {
+
+            console.error(error);
+
+            toast.error(
+                "Unable to fetch MLA details"
+            );
+        }
+    };
     const [form, setForm] = useState({
         name: "",
+        party: "",
+        phone: "",
+        photo: "",
         email: "",
         password: "",
         mlaId: generateMlaId(),
         constituencyId: "",
         district: "",
-        phone: "",
         place: "",
     });
     const [mlas, setMlas] = useState([]);
@@ -74,6 +109,8 @@ const CreateMla = () => {
             setForm({
                 name: "",
                 email: "",
+                party: "",
+                photo: "",
                 password: "",
                 mlaId: generateMlaId(),
                 constituencyId: "",
@@ -99,6 +136,8 @@ const CreateMla = () => {
 
         setForm({
             name: mla.name,
+            party: mla.party || "",
+            photo: mla.photo || "",
             email: mla.email,
             password: "",
             mlaId: mla.mlaId,
@@ -158,9 +197,18 @@ const CreateMla = () => {
                             name="name"
                             placeholder="Name"
                             value={form.name}
-                            onChange={handleChange}
-                            required
+                            readOnly
                         />
+
+                        <input
+                            type="text"
+                            name="party"
+                            value={form.party}
+                            placeholder="Party"
+                            readOnly
+                        />
+
+
 
                         <input
                             type="email"
@@ -191,10 +239,9 @@ const CreateMla = () => {
                         <input
                             type="text"
                             name="phone"
-                            placeholder="Phone"
                             value={form.phone}
-                            onChange={handleChange}
-                            required
+                            placeholder="Phone"
+                            readOnly
                         />
 
                         <input
@@ -226,7 +273,7 @@ const CreateMla = () => {
                         <select
                             name="constituencyId"
                             value={form.constituencyId}
-                            onChange={handleChange}
+                            onChange={handleConstituencyChange}
                             required
                         >
                             <option value="">
@@ -245,6 +292,22 @@ const CreateMla = () => {
                                     </option>
                                 ))}
                         </select>
+
+                        {form.photo && (
+                            <div className="mla-preview">
+
+                                <img
+                                    src={form.photo}
+                                    alt={form.name}
+                                    className="mla-preview-photo"
+                                />
+
+                                <h4>{form.name}</h4>
+
+                                <p>{form.party}</p>
+
+                            </div>
+                        )}
 
                         <button
                             type="submit"

@@ -49,6 +49,13 @@ export default function Sidebar() {
           Create Citizen
         </Link>
 
+        <Link
+          to="/admin/banner"
+          className="sidebar-link"
+        >
+          Manage Banner
+        </Link>
+
         <button
           onClick={logout}
           className="logout-btn"
