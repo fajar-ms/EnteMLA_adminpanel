@@ -4,6 +4,7 @@ import AdminSidebar from "../components/AdminSidebar";
 import { toast } from "react-toastify";
 import "../style/CreateMla.css";
 import "../style/AdminSidebar.css";
+import { constituencyMap } from "../data/constituencyMap";
 
 const CreateCitizen = () => {
 
@@ -27,15 +28,6 @@ const CreateCitizen = () => {
         fetchCitizens();
     }, []);
 
-    const constituencyMap = {
-        ernakulam: [
-            { value: "aluva", label: "Aluva" },
-            { value: "kochi", label: "Kochi" }
-        ],
-        thrissur: [
-            { value: "chalakkudy", label: "Chalakkudy" }
-        ]
-    };
 
     const [form, setForm] = useState({
         name: "",
@@ -68,7 +60,7 @@ const CreateCitizen = () => {
 
             if (editingId) {
 
-                await axiosInstance.put(
+                await axiosInstance.patch(
                     `/admin/citizen/${editingId}`,
                     form
                 );

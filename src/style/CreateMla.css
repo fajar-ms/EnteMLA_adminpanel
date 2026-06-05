@@ -1,19 +1,16 @@
 /* =========================
-   PAGE LAYOUT
+   PAGE LAYOUT & GLOBALS
 ========================= */
 
 .create-mla-page {
   display: flex;
   height: 100vh;
   overflow: hidden;
-  background: #f4f7fb;
-  font-family: Arial, Helvetica, sans-serif;
+  background: #f8fafc; /* Crisp, clean executive gray */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
+  color: #334155;
+  -webkit-font-smoothing: antialiased;
 }
-
-/* =========================
-   SIDEBAR
-========================= */
-
 
 /* =========================
    CONTENT AREA
@@ -21,7 +18,7 @@
 
 .create-mla-content {
   flex: 1;
-  padding: 24px;
+  padding: 32px;
   overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
@@ -29,153 +26,207 @@
 }
 
 /* =========================
-   CARD
+   CARD & SECTIONS
 ========================= */
 
 .mla-card {
   background: #ffffff;
-  padding: 25px;
-  border-radius: 14px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  border-radius: 4px; /* Classic sharp corners or minimal rounding */
+  margin-bottom: 32px;
+  border: 1px solid #e2e8f0; /* Crisp borders instead of heavy drop shadows */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* =========================
-   TITLE
+   TYPOGRAPHY
 ========================= */
 
 .mla-title {
-  margin-bottom: 22px;
-  color: #1f2937;
-  text-align: center;
-  font-size: 28px;
-  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #0f172a; /* Deep charcoal slate */
+  text-align: left;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 10px;
+}
+
+.table-title {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 /* =========================
-   FORM
+   FORM & INPUTS
 ========================= */
 
 .mla-form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
-
-/* =========================
-   INPUTS
-========================= */
 
 .mla-form input,
 .mla-form select {
   width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
   outline: none;
   font-size: 14px;
-  transition: 0.3s ease;
-  background: #fff;
+  color: #1e293b;
+  background: #ffffff;
   box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mla-form input:focus,
 .mla-form select:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 5px rgba(37, 99, 235, 0.25);
+  border-color: #475569; /* Muted corporate slate slate focus */
+  box-shadow: 0 0 0 2px rgba(71, 85, 105, 0.1);
 }
 
-/* READONLY */
-
+/* READONLY STATES */
 .mla-form input[readonly] {
-  background: #f3f4f6;
-  color: #6b7280;
+  background: #f1f5f9;
+  color: #64748b;
+  border-color: #e2e8f0;
   cursor: not-allowed;
 }
 
 /* =========================
-   SUBMIT BUTTON
+   MLA PREVIEW BLOCK
+========================= */
+
+.mla-preview {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 4px;
+}
+
+.mla-preview-photo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px; /* Classic square format looks cleaner in directories */
+  border: 1px solid #cbd5e1;
+  background: #fff;
+}
+
+.mla-preview-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  color: #0f172a;
+}
+
+.mla-preview-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =========================
+   BUTTONS
 ========================= */
 
 .submit-btn {
   grid-column: 1 / -1;
-  padding: 13px;
-  border: none;
-  border-radius: 10px;
-  background: #2563eb;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
+  padding: 12px 24px;
+  border: 1px solid #1e3a8a;
+  border-radius: 4px;
+  background: #1e3a8a; /* Traditional Navy Blue */
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: background 0.15s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  justify-self: end; /* Moves button to bottom right like desktop forms */
+  min-width: 180px;
 }
 
 .submit-btn:hover {
-  background: #1d4ed8;
-  transform: translateY(-1px);
+  background: #172554;
 }
 
 /* =========================
-   TABLE TITLE
-========================= */
-
-.table-title {
-  margin-bottom: 18px;
-  color: #111827;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-/* =========================
-   TABLE WRAPPER
+   TABLE DIRECTORY
 ========================= */
 
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
-  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
-
-/* =========================
-   TABLE
-========================= */
 
 .mla-table {
   width: 100%;
-  min-width: 760px;
+  min-width: 850px;
   border-collapse: collapse;
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+  font-size: 14px;
+  text-align: left;
 }
 
-/* HEADER */
-
+/* HEADER STYLE */
 .mla-table thead {
-  background: #2563eb;
-  color: white;
+  background: #f1f5f9; /* Professional light silver header bar */
+  border-bottom: 2px solid #e2e8f0;
 }
 
 .mla-table th {
-  padding: 13px;
-  text-align: left;
-  font-size: 14px;
+  padding: 14px 16px;
+  font-weight: 600;
+  color: #475569;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   white-space: nowrap;
 }
 
-/* BODY */
-
+/* DATA ROWS */
 .mla-table td {
-  padding: 12px;
-  border-bottom: 1px solid #e5e7eb;
-  font-size: 13px;
-  color: #374151;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
   white-space: nowrap;
+}
+
+.mla-table tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .mla-table tbody tr:hover {
-  background: #f9fafb;
+  background: #f8fafc;
+}
+
+/* Helper formatting utilities */
+.mla-table td.font-medium {
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.mla-table td.mono-text {
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 13px;
+  color: #475569;
 }
 
 /* =========================
@@ -184,200 +235,58 @@
 
 .action-group {
   display: flex;
-  gap: 8px;
+  gap: 6px;
+  justify-content: center;
 }
 
 .edit-btn,
 .delete-btn {
-  padding: 7px 12px;
-  border: none;
-  border-radius: 7px;
+  padding: 5px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 13px;
-  transition: 0.3s ease;
-  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  background: none;
 }
 
-/* EDIT */
-
+/* Classic clean styling instead of overly bright solid color blocks */
 .edit-btn {
-  background: #2563eb;
+  color: #1e3a8a;
+  border-color: #bfdbfe;
+  background-color: #eff6ff;
 }
 
 .edit-btn:hover {
-  background: #1d4ed8;
+  background-color: #dbeafe;
+  color: #172554;
 }
 
-/* DELETE */
-
 .delete-btn {
-  background: #dc2626;
+  color: #b91c1c;
+  border-color: #fecaca;
+  background-color: #fef2f2;
 }
 
 .delete-btn:hover {
-  background: #b91c1c;
+  background-color: #fee2e2;
+  color: #7f1d1d;
 }
 
 /* =========================
-   TABLET RESPONSIVE
+   RESPONSIVE DESIGN
 ========================= */
 
 @media (max-width: 992px) {
-
-  /* .admin-sidebar {
-    width: 150px;
-    min-width: 150px;
-  } */
-
-  .create-mla-content {
-    padding: 18px;
-  }
-
-  .mla-card {
-    padding: 22px;
-  }
-
-  .mla-title {
-    font-size: 24px;
-  }
-
-  .table-title {
-    font-size: 22px;
-  }
-
-  .mla-table th,
-  .mla-table td {
-    padding: 10px;
-    font-size: 13px;
-  }
+  .create-mla-content { padding: 20px; }
+  .mla-card { padding: 20px; }
 }
-
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
 
 @media (max-width: 768px) {
-
-  .create-mla-page {
-    flex-direction: column;
-  }
-
-  /* .admin-sidebar {
-    width: 100%;
-    min-width: 100%;
-  } */
-
-  .create-mla-content {
-    padding: 14px;
-  }
-
-  .mla-card {
-    padding: 18px;
-    border-radius: 12px;
-  }
-
-  .mla-title {
-    font-size: 22px;
-  }
-
-  .table-title {
-    font-size: 20px;
-  }
-
-  .mla-form {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .submit-btn {
-    width: 100%;
-  }
-
-  .action-group {
-    flex-direction: column;
-  }
-
-  .edit-btn,
-  .delete-btn {
-    width: 100%;
-  }
-
-  .mla-table {
-    min-width: 700px;
-  }
-}
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media (max-width: 480px) {
-
-  .create-mla-content {
-    padding: 10px;
-  }
-
-  .mla-card {
-    padding: 16px;
-  }
-
-  .mla-title {
-    font-size: 20px;
-  }
-
-  .table-title {
-    font-size: 18px;
-  }
-
-  .mla-form input,
-  .mla-form select {
-    padding: 11px;
-    font-size: 13px;
-  }
-
-  .submit-btn {
-    padding: 12px;
-    font-size: 14px;
-  }
-
-  .mla-table {
-    min-width: 650px;
-  }
-
-  .mla-table th,
-  .mla-table td {
-    padding: 9px;
-    font-size: 12px;
-  }
-}
-
-/* =========================
-   LARGE SCREEN OPTIMIZATION
-========================= */
-
-@media (min-width: 1200px) {
-
-  .create-mla-content {
-    padding: 18px;
-  }
-
-  .mla-card {
-    padding: 24px;
-  }
-
-  .mla-table {
-    min-width: 100%;
-  }
-}
-.mla-preview {
-    text-align: center;
-    margin: 15px 0;
-}
-
-.mla-preview-photo {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #1e3a8a;
+  .create-mla-page { flex-direction: column; }
+  .create-mla-content { padding: 16px; }
+  .mla-form { grid-template-columns: 1fr; gap: 16px; }
+  .submit-btn { width: 100%; }
+  .action-group { flex-direction: row; }
 }

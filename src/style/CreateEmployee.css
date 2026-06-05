@@ -1,219 +1,369 @@
-/* =========================
-   PAGE LAYOUT
-========================= */
-
+/* ==========================================================================
+   1. GLOBAL PAGE CONTAINER & LAYOUT REFINEMENTS
+   ========================================================================== */
 .create-employee-page {
   display: flex;
   min-height: 100vh;
   width: 100%;
-  background: #f4f7fb;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8fafc; /* Crisp, neutral executive canvas background */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #334155;
+  -webkit-font-smoothing: antialiased;
 }
-
-/* =========================
-   CONTENT
-========================= */
 
 .create-employee-content {
   flex: 1;
-
-  margin-left: 220px;
-
-  padding: 30px;
-
+  padding: 32px 40px;
   box-sizing: border-box;
-
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
-/* =========================
-   CARD
-========================= */
-
+/* ==========================================================================
+   2. DATA INGESTION CARD (FORM HOUSING)
+   ========================================================================== */
 .employee-form-card {
-  max-width: 750px;
-
-  margin: 20px auto;
-
+  max-width: 900px;
+  margin: 0 auto 40px auto;
   background: #ffffff;
-
-  padding: 35px;
-
-  border-radius: 16px;
-
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  border-radius: 4px; /* Crisp geometric structure over rounded tech trends */
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
-
-/* =========================
-   TITLE
-========================= */
 
 .employee-form-title {
-  margin-bottom: 25px;
-
-  color: #1f2937;
-
-  text-align: center;
-
-  font-size: 32px;
-
-  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 32px;
+  color: #0f172a; /* Deep structural slate */
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 14px;
 }
 
-/* =========================
-   FORM
-========================= */
+.section-title {
+  max-width: 100%;
+  margin: 48px 0 20px 0;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-left: 3px solid #1e3a8a; /* Authority corporate navy indicator tag */
+  padding-left: 12px;
+}
 
+/* ==========================================================================
+   3. FORM ELEMENTS & INTERACTION FIELDS
+   ========================================================================== */
 .employee-form {
   display: grid;
-
   grid-template-columns: repeat(2, 1fr);
-
-  gap: 18px;
+  gap: 20px 28px;
 }
 
-/* =========================
-   INPUTS
-========================= */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
 
 .employee-form input,
 .employee-form select {
   width: 100%;
-
-  padding: 13px;
-
-  border: 1px solid #d1d5db;
-
-  border-radius: 10px;
-
-  font-size: 15px;
-
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #1e293b;
   outline: none;
-
-  transition: 0.3s ease;
-
+  background-color: #ffffff;
   box-sizing: border-box;
-
-  background: #ffffff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
+/* Active Form Operational States */
 .employee-form input:focus,
 .employee-form select:focus {
-  border-color: #2563eb;
-
-  box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+  border-color: #475569;
+  box-shadow: 0 0 0 3px rgba(71, 85, 105, 0.08);
 }
 
-/* =========================
-   READONLY
-========================= */
-
+/* Read Only (System Auto-Generated Values) */
 .employee-form input[readonly] {
-  background: #f3f4f6;
-
-  color: #6b7280;
-
+  background-color: #f1f5f9;
+  color: #64748b;
+  border-color: #e2e8f0;
   cursor: not-allowed;
 }
 
-/* =========================
-   BUTTON
-========================= */
+/* Disabled Form Ingestion Dropdowns */
+.employee-form select:disabled {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+}
 
+/* Primary Form Confirmation Control */
 .form-submit {
   grid-column: 1 / -1;
-
-  padding: 14px;
-
-  border: none;
-
-  border-radius: 10px;
-
-  background: #2563eb;
-
-  color: white;
-
-  font-size: 16px;
-
+  margin-top: 12px;
+  padding: 12px 28px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #1e3a8a; /* Classic Authority Navy Blue */
+  color: #ffffff;
+  font-size: 12px;
   font-weight: 600;
-
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   cursor: pointer;
-
-  transition: 0.3s ease;
+  transition: background-color 0.15s ease;
+  justify-self: end;
+  min-width: 240px;
 }
 
 .form-submit:hover {
-  background: #1d4ed8;
-
-  transform: translateY(-1px);
+  background-color: #172554;
 }
 
-/* =========================
-   TABLET
-========================= */
+/* ==========================================================================
+   4. MANAGEMENT DATA DIRECTORY TABLE
+   ========================================================================== */
+.table-wrapper {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  margin-bottom: 40px;
+  overflow: hidden;
+}
 
-@media (max-width: 992px) {
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
 
+.employee-table th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 16px 20px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.employee-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  vertical-align: middle;
+}
+
+/* Row-Level Alternating Highlights */
+.employee-table tbody tr:hover {
+  background-color: #fdfdfd;
+}
+
+/* Structured Typography Overrides Inside Rows */
+.font-medium {
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.mono-text {
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 13px;
+  color: #475569;
+}
+
+/* Inline Action Control Wrappers */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Standardized Flat Row Controls */
+.edit-btn, 
+.delete-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 3px;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.15s ease;
+}
+
+.edit-btn {
+  border: 1px solid #cbd5e1;
+  color: #334155;
+}
+
+.edit-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.delete-btn {
+  border: 1px solid #fee2e2;
+  color: #991b1b;
+}
+
+.delete-btn:hover {
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+}
+
+/* ==========================================================================
+   5. INTERACTIVE RECORD MODIFICATION WINDOW (MODAL OVERLAY)
+   ========================================================================== */
+.edit-form-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border: 1px solid #94a3b8;
+  border-radius: 4px;
+  padding: 36px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Backdrop Dimming Block for Modal Activation Isolation */
+.edit-form-container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.3); /* Subdued Slate Overlay */
+  z-index: -1;
+  pointer-events: none;
+}
+
+.edit-form-container h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #0f172a;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edit-form input,
+.edit-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #1e293b;
+  outline: none;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.edit-form input:focus,
+.edit-form select:focus {
+  border-color: #475569;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.update-btn, 
+.cancel-btn {
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.update-btn {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+.update-btn:hover {
+  background-color: #172554;
+}
+
+.cancel-btn {
+  background-color: #ffffff;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.cancel-btn:hover {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE MEDIA ARCHITECTURES
+   ========================================================================== */
+@media (max-width: 1024px) {
   .create-employee-content {
-    margin-left: 180px;
-    padding: 20px;
+    padding: 24px;
   }
-
-  .employee-form {
-    gap: 15px;
+  
+  .table-wrapper {
+    overflow-x: auto; /* Gracefully scroll wide directories horizontally on small displays */
   }
 }
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 768px) {
-
   .create-employee-page {
     flex-direction: column;
   }
 
-  .create-employee-content {
-    margin-left: 0;
-    padding: 15px;
-  }
-
   .employee-form {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .employee-form-card {
-    padding: 22px;
-  }
-
-  .employee-form-title {
-    font-size: 26px;
-  }
-}
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media (max-width: 480px) {
-
-  .employee-form-card {
-    padding: 18px;
-  }
-
-  .employee-form-title {
-    font-size: 22px;
-  }
-
-  .employee-form input,
-  .employee-form select {
-    padding: 11px;
-    font-size: 14px;
+    padding: 24px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
 
   .form-submit {
-    padding: 12px;
-    font-size: 14px;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .edit-form-container {
+    width: calc(100% - 32px);
+    padding: 24px;
   }
 }

@@ -1,150 +1,175 @@
 /* =========================
-   SIDEBAR
+   SIDEBAR MAIN LAYOUT
 ========================= */
-
 .sidebar {
-  width: 220px;
-  min-width: 220px;
+  width: 260px; /* Slightly widened to gracefully accommodate corporate copy */
+  min-width: 260px;
   height: 100vh;
-  background: #111827;
-  color: #ffffff;
-  padding: 24px 18px;
+  background: #0f172a; /* Deep luxury corporate slate slate/charcoal */
+  color: #f1f5f9;
+  padding: 32px 20px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-
   position: sticky;
   top: 0;
-
   overflow-x: hidden;
   flex-shrink: 0;
+  border-right: 1px solid #1e293b;
 }
 
 /* =========================
-   TITLE
+   BRAND / HEADER AREA
 ========================= */
+.sidebar-brand {
+  margin-bottom: 35px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #1e293b;
+}
 
 .sidebar-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 35px;
-  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
   color: #ffffff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.sidebar-subtitle {
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-top: 4px;
 }
 
 /* =========================
-   NAVIGATION
+   NAVIGATION MANAGEMENT
 ========================= */
-
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
+  height: 100%;
+}
+
+.nav-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+  letter-spacing: 0.08em;
+  margin: 16px 0 6px 10px;
 }
 
 /* =========================
-   LINKS
+   LINKS & MENUS
 ========================= */
-
 .sidebar-link {
   text-decoration: none;
-  color: #d1d5db;
-
-  padding: 12px 14px;
-  border-radius: 10px;
-
-  font-size: 15px;
+  color: #94a3b8; /* Professional high-contrast text rendering */
+  padding: 10px 14px;
+  border-radius: 4px; /* Crisp square borders */
+  font-size: 14px;
   font-weight: 500;
-
-  transition: all 0.3s ease;
+  transition: all 0.15s ease-in-out;
   background: transparent;
+  display: block;
 }
 
+/* Stable static transitions over playful tech transforms */
 .sidebar-link:hover {
-  background: #2563eb;
+  background: #1e293b;
   color: #ffffff;
-  transform: translateX(4px);
 }
 
-/* ACTIVE LINK */
-
+/* ACTIVE LINK CONFIGURATION */
 .sidebar-link.active {
-  background: #2563eb;
+  background: #1e3a8a; /* Deep traditional navy indicator block */
   color: #ffffff;
+  font-weight: 600;
 }
 
 /* =========================
-   LOGOUT BUTTON
+   DIVIDER UTILITY
 ========================= */
+.sidebar-divider {
+  height: 1px;
+  background: #1e293b;
+  margin: 20px 0 12px;
+}
 
+/* =========================
+   LOGOUT ACTION TERMINAL
+========================= */
 .logout-btn {
-  margin-top: 20px;
-
-  padding: 12px;
-
-  border: none;
-  border-radius: 10px;
-
-  background: #dc2626;
-  color: #ffffff;
-
-  font-size: 15px;
-  font-weight: 600;
-
+  margin-top: auto; /* Standard fixed placement at base of view */
+  padding: 11px;
+  border: 1px solid #334155;
+  border-radius: 4px;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.15s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .logout-btn:hover {
-  background: #b91c1c;
+  background: #1e293b;
+  color: #ef4444; /* Clean subtle text threat signal */
+  border-color: rgba(239, 68, 68, 0.2);
 }
 
 /* =========================
-   TABLET
+   TABLET LAYOUT METRICS
 ========================= */
-
 @media (max-width: 992px) {
-
   .sidebar {
-    width: 180px;
-    min-width: 180px;
-
-    padding: 20px 14px;
+    width: 220px;
+    min-width: 220px;
+    padding: 24px 16px;
   }
 
   .sidebar-title {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .sidebar-link {
-    font-size: 14px;
-    padding: 10px 12px;
+    font-size: 13px;
+    padding: 9px 12px;
   }
 }
 
 /* =========================
-   MOBILE
+   MOBILE RESPONSIVE MATRIX
 ========================= */
-
 @media (max-width: 768px) {
-
   .sidebar {
     width: 100%;
     min-width: 100%;
-
     height: auto;
-
     position: relative;
-
-    padding: 15px;
+    padding: 20px;
+    border-right: none;
+    border-bottom: 1px solid #1e293b;
   }
 
-  .sidebar-title {
-    margin-bottom: 18px;
+  .sidebar-brand {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
   }
 
   .sidebar-nav {
-    gap: 10px;
+    gap: 6px;
+  }
+
+  .nav-section-label {
+    margin: 10px 0 4px 4px;
   }
 
   .sidebar-link {
@@ -152,32 +177,35 @@
     box-sizing: border-box;
   }
 
+  .sidebar-divider {
+    margin: 12px 0;
+  }
+
   .logout-btn {
     width: 100%;
+    margin-top: 10px;
   }
 }
 
 /* =========================
-   SMALL MOBILE
+   SMALL MOBILE SCREEN METRICS
 ========================= */
-
 @media (max-width: 480px) {
-
   .sidebar {
-    padding: 12px;
+    padding: 16px;
   }
 
   .sidebar-title {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .sidebar-link {
     font-size: 13px;
-    padding: 10px;
+    padding: 8px 10px;
   }
 
   .logout-btn {
-    font-size: 13px;
-    padding: 10px;
+    font-size: 12px;
+    padding: 9px;
   }
 }

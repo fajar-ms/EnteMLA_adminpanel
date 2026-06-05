@@ -1,75 +1,109 @@
-/* Full page center */
-
+/* ==========================================================================
+   1. GLOBAL PAGE CANVAS
+   ========================================================================== */
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8fafc; /* Clean, crisp executive background */
+  -webkit-font-smoothing: antialiased;
 }
 
 .login-container {
   height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
 }
 
-/* Login card */
-
+/* ==========================================================================
+   2. STRUCTURAL LOGIN CARD
+   ========================================================================== */
 .login-card {
-  width: 350px;
+  width: 100%;
+  max-width: 380px; /* Rigorous data-entry framework layout */
   background: #ffffff;
-  padding: 35px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 4px; /* Sharp geometric borders instead of casual rounded corners */
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
 }
 
-/* Title */
-
+/* ==========================================================================
+   3. TYPOGRAPHY & HEADER
+   ========================================================================== */
 .login-title {
   text-align: center;
-  margin-bottom: 25px;
-  color: #1f2937;
-  font-size: 28px;
-  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 32px;
+  color: #0f172a; /* Deep structural slate */
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  border-bottom: 2px solid #0f172a; /* Authority corporate underline accent */
+  padding-bottom: 14px;
 }
 
-/* Form */
-
+/* ==========================================================================
+   4. FORM ELEMENTS & OPERATIONAL STATES
+   ========================================================================== */
 .login-form {
   display: flex;
   flex-direction: column;
 }
 
-/* Inputs */
-
 .login-input {
-  padding: 12px;
-  margin-bottom: 18px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 15px;
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #1e293b;
   outline: none;
-  transition: 0.3s;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
+/* Focused input state */
 .login-input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+  border-color: #475569; /* Slate grey focus line */
+  box-shadow: 0 0 0 3px rgba(71, 85, 105, 0.08); /* High-contrast subtle accessibility ring */
 }
 
-/* Button */
+/* Placeholder styling alignment */
+.login-input::placeholder {
+  color: #94a3b8;
+}
 
+/* ==========================================================================
+   5. PRIMARY EXECUTION CONTROL (BUTTON)
+   ========================================================================== */
 .login-button {
+  width: 100%;
   padding: 12px;
-  background: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  background-color: #1e3a8a; /* Classic Authority Corporate Navy Blue */
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase; /* Formalized presentation */
+  letter-spacing: 0.05em;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.15s ease;
+  margin-top: 4px;
 }
 
+/* Interaction States */
 .login-button:hover {
-  background: #1d4ed8;
+  background-color: #172554; /* Deepened Navy shadow depth */
+}
+
+.login-button:active {
+  background-color: #1e3a8a;
 }

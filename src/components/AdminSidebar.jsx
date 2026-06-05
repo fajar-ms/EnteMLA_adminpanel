@@ -12,57 +12,44 @@ export default function Sidebar() {
   };
 
   return (
-
     <div className="sidebar">
-
-      <h2 className="sidebar-title">
-        Admin Panel
-      </h2>
+      <div className="sidebar-brand">
+        <h2 className="sidebar-title">Control Panel</h2>
+        <span className="sidebar-subtitle">Administrative Suite</span>
+      </div>
 
       <nav className="sidebar-nav">
+        <div className="nav-section-label">Core Directory</div>
 
-        <Link
-          to="/dashboard"
-          className="sidebar-link"
-        >
-          Dashboard
+        <Link to="/dashboard" className="sidebar-link">
+          Dashboard Overview
         </Link>
 
-        <Link
-          to="/create-employee"
-          className="sidebar-link"
-        >
-          Create Employee
+        <div className="nav-section-label">Account Provisioning</div>
+
+        <Link to="/create-employee" className="sidebar-link">
+          Register Employee
         </Link>
 
-        <Link
-          to="/create-mla"
-          className="sidebar-link"
-        >
-          Create MLA
+        <Link to="/create-mla" className="sidebar-link">
+          Register MLA Representative
         </Link>
 
-        <Link
-          to="/create-citizen"
-          className="sidebar-link"
-        >
-          Create Citizen
+        <Link to="/create-citizen" className="sidebar-link">
+          Register Citizen Profile
         </Link>
 
-        <Link
-          to="/admin/banner"
-          className="sidebar-link"
-        >
-          Manage Banner
+        <div className="nav-section-label">Content Assets</div>
+
+        <Link to="/admin/banner" className="sidebar-link">
+          Manage Media Banners
         </Link>
 
-        <button
-          onClick={logout}
-          className="logout-btn"
-        >
-          Logout
+        <div className="sidebar-divider"></div>
+
+        <button onClick={logout} className="logout-btn">
+          Terminate Session
         </button>
-
       </nav>
     </div>
   );

@@ -12,6 +12,7 @@ import "../style/AdminBanner.css";
 const AdminBanner = () => {
 
     const [banners, setBanners] = useState([]);
+    const [imageFile, setImageFile] = useState(null);
 
     const [form, setForm] = useState({
         title: "",
@@ -52,12 +53,41 @@ const AdminBanner = () => {
         e.preventDefault();
 
         try {
+            const formData = new FormData();
+
+            formData.append(
+                "title",
+                form.title
+            );
+
+            formData.append(
+                "description",
+                form.description
+            );
+
+            formData.append(
+                "isActive",
+                form.isActive
+            );
+
+            if (imageFile) {
+                formData.append(
+                    "image",
+                    imageFile
+                );
+            }
 
             if (editingId) {
 
                 await axiosInstance.put(
                     `/banner/${editingId}`,
-                    form
+                    formData,
+                    {
+                        headers: {
+                            "Content-Type":
+                                "multipart/form-data",
+                        },
+                    }
                 );
 
                 toast.success(
@@ -68,7 +98,13 @@ const AdminBanner = () => {
 
                 await axiosInstance.post(
                     "/banner",
-                    form
+                    formData,
+                    {
+                        headers: {
+                            "Content-Type":
+                                "multipart/form-data",
+                        },
+                    }
                 );
 
                 toast.success(
@@ -83,6 +119,7 @@ const AdminBanner = () => {
                 isActive: true,
             });
 
+            setImageFile(null);
             setEditingId(null);
 
             fetchBanners();
@@ -104,7 +141,7 @@ const AdminBanner = () => {
             imageUrl: banner.imageUrl,
             isActive: banner.isActive,
         });
-
+        setImageFile(null);
         setEditingId(banner._id);
     };
 
@@ -142,62 +179,78 @@ const AdminBanner = () => {
             <AdminSidebar />
 
             <div className="admin-banner-content">
-                {/* Form Card */}
+                {/* FORM CARD */}
                 <div className="banner-card">
                     <h2 className="banner-title">
-                        {editingId ? "Edit Banner" : "Add Banner"}
+                        {editingId ? "Modify Banner Properties" : "Register New Banner"}
                     </h2>
 
                     <form onSubmit={handleSubmit} className="banner-form">
-                        <input
-                            type="text"
-                            name="title"
-                            placeholder="Banner Title"
-                            value={form.title}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                name="title"
+                                placeholder="Banner Title / Heading"
+                                value={form.title}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
 
-                        <textarea
-                            name="description"
-                            placeholder="Description"
-                            value={form.description}
-                            onChange={handleChange}
-                            rows="1"
-                        />
+                        <div className="form-group">
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) =>
+                                    setImageFile(e.target.files[0])
+                                }
+                            />
+                        </div>
 
-                        <input
-                            type="text"
-                            name="imageUrl"
-                            placeholder="Image URL"
-                            value={form.imageUrl}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className="form-group full-width">
+                            <textarea
+                                name="description"
+                                placeholder="Administrative Description / Subtext Copy"
+                                value={form.description}
+                                onChange={handleChange}
+                                rows="3"
+                            />
+                        </div>
 
-                        <button type="submit" className="submit-btn">
-                            {editingId ? "Update Banner" : "Add Banner"}
-                        </button>
-
-                        {form.imageUrl && (
+                        {(imageFile || form.imageUrl) && (
                             <div className="banner-preview">
-                                <img src={form.imageUrl} alt="Preview" />
+                                <span className="preview-label">
+                                    Preview:
+                                </span>
+
+                                <img
+                                    src={
+                                        imageFile
+                                            ? URL.createObjectURL(imageFile)
+                                            : form.imageUrl
+                                    }
+                                    alt="Preview"
+                                />
                             </div>
                         )}
+
+                        <button type="submit" className="submit-btn">
+                            {editingId ? "Save Property Changes" : "Publish Banner Asset"}
+                        </button>
                     </form>
                 </div>
 
-                {/* Banners Display Table */}
-                <h2 className="table-title">All Banners</h2>
+                {/* BANNERS DISPLAY TABLE */}
+                <h2 className="table-title">Active Banner Registry</h2>
 
                 <div className="table-wrapper">
                     <table className="banner-table">
                         <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Actions</th>
+                                <th style={{ width: "160px" }}>Asset</th>
+                                <th>Heading Title</th>
+                                <th>Editorial Description</th>
+                                <th style={{ textAlign: "center", width: "150px" }}>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -211,7 +264,7 @@ const AdminBanner = () => {
                                         />
                                     </td>
                                     <td className="text-bold">{banner.title}</td>
-                                    <td>{banner.description}</td>
+                                    <td className="text-muted">{banner.description || "—"}</td>
                                     <td>
                                         <div className="action-group">
                                             <button
